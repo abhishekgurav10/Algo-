@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trading Platform PnL</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+            socket.on('update_pnl', function(data) {
+                document.getElementById('pnl').innerText = 'Total PnL: ' + data.pnl;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Trading Platform</h1>
+    <div id="pnl">Total PnL: --</div>
+</body>
+</html>
